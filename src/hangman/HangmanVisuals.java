@@ -13,7 +13,7 @@ public class HangmanVisuals {
 
 	private static String[][] hangMen = new String[9][20];
 
-	public static String[][] loadHangMen() {
+	public static void loadHangMen() {
 
 		String fileName = "";
 		Path path = null;
@@ -49,7 +49,6 @@ public class HangmanVisuals {
 				System.out.println("Problem closing the BufferedReader");
 			}
 		}
-		return hangMen;
 	}
 
 	public static void update(ArrayList<Character> guessedLetters) {
