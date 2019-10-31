@@ -16,12 +16,12 @@ public class MainHangman {
 		
 		Scanner scnr = new Scanner(System.in);
 		String userName;
-		String gameMode;
+//		String gameMode;
 		System.out.println("Dang Man, Let's Play Hang Man!");
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
-		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
-		gameMode = scnr.nextLine();
+//		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
+//		gameMode = scnr.nextLine();
 		//This is where
 		
 		//Loading all of our graphics into hangMen
