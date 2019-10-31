@@ -1,4 +1,4 @@
-package co.grandcircus;
+package hangman;
 
 import java.util.Scanner;
 
