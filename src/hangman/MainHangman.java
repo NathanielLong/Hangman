@@ -1,8 +1,10 @@
 package hangman;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class MainHangman {
 	
 	public static void main(String[] args) {
+		
 		Scanner scnr = new Scanner(System.in);
 		String userName;
 		String gameMode;
