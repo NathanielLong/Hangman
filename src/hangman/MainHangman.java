@@ -1,7 +1,16 @@
 package hangman;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class MainHangman {
+	
+	static ArrayList<Character> guessedLetters = new ArrayList<>(); //Contains all characters that have already been guessed by the player
 	
 	public static void main(String[] args) {
 		
@@ -15,26 +24,16 @@ public class MainHangman {
 		gameMode = scnr.nextLine();
 		//This is where
 		
+		//Loading all of our graphics into hangMen
+//		HangmanVisuals.loadHangMen();
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		//Showing first graphic
+//		HangmanVisuals.update(guessedLetters);
 		
 		
 	}
+	
+	
+	
 
 }

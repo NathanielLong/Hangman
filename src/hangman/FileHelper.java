@@ -1,4 +1,4 @@
-package fileiodemo;
+package hangman;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -37,7 +37,7 @@ public class FileHelper {
 
 	}
 
-	public static void writeToFile(Person someOne) {
+	public static void writeToFile() {
 		String fileName = "write_stuff.txt";
 
 		Path path = Paths.get("resources", fileName);
@@ -47,7 +47,7 @@ public class FileHelper {
 
 		try {
 			output = new PrintWriter(new FileOutputStream(file, true));
-			output.println(someOne);
+			output.println();
 			output.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Hey, contact customer service!");
