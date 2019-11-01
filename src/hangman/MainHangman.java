@@ -32,7 +32,7 @@ public class MainHangman {
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
 			partialWord += "_";
 		}
-		for (int i = 0; (i < 10 || partialWord.equalsIgnoreCase(randomStringFromEasyWords)); i++) {
+		for (int i = 0; (i < 10 && !partialWord.equalsIgnoreCase(randomStringFromEasyWords)); i++) {
 		
 		
 		
