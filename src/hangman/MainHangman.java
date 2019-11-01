@@ -46,8 +46,8 @@ public class MainHangman {
 				counter++;
 			} else {
 				System.out.println("Oops, this word doesn't contain this letter...");
-				HangmanVisuals.update(guessedLetters, partialWord);
 				guessedLetters.add(guessedSingleString);
+				HangmanVisuals.update(guessedLetters, partialWord);
 				counter++;
 			}
 		}
