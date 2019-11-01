@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class FileHelper {
-	
+
 	public static ArrayList<String> readFromFile() {
 		ArrayList<String> easywords = new ArrayList<>();
 		String fileName = "easywordlist.txt";
@@ -102,6 +102,5 @@ public class FileHelper {
 			System.out.println("The folder already exists");
 		}
 	}
-
 
 }

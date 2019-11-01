@@ -55,17 +55,17 @@ public class HangmanVisuals {
 
 		// Clearing out console
 		clearConsole();
-		
+
 		// Showing relevant hangman graphic
 		for (String y : hangMen[guessedLetters.size()]) {
 			System.out.println(y);
 		}
-		
-		//Showing word
+
+		// Showing word
 		System.out.println(partialWord);
 		System.out.println("");
-		
-		//Showing guessed letters
+
+		// Showing guessed letters
 		System.out.println("Guessed letters:");
 		for (Character c : guessedLetters) {
 			System.out.print(c + ", ");
