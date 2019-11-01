@@ -69,8 +69,8 @@ public class HangmanVisuals {
 
 
 		// Showing guessed letters
-		System.out.println("Guessed letters:");
 		if (!guessedLetters.isEmpty()) {
+			System.out.println("Guessed letters:");
 			for (Character c : guessedLetters) {
 				System.out.print(c + ", ");
 			}
