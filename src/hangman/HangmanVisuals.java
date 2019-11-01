@@ -57,7 +57,7 @@ public class HangmanVisuals {
 		}
 
 		// Showing word
-		System.out.println(partialWord);
+		printPartialWord(partialWord);
 		System.out.println("");
 
 		// Showing guessed letters
@@ -69,6 +69,15 @@ public class HangmanVisuals {
 			System.out.println("");
 		}
 		
+	}
+	
+	private static void printPartialWord(String partialWord) {
+		for (char c :partialWord.toCharArray()) {
+			System.out.print(c);
+			if (c == '_') {
+				System.out.print(' ');
+			}
+		}
 	}
 
 	private static void clearConsole() {
