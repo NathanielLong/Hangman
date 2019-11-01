@@ -17,44 +17,40 @@ public class MainHangman {
 //	static ArrayList<String> easywords = new ArrayList<>();
 
 	public static void main(String[] args) {
-		
+
 		Scanner scnr = new Scanner(System.in);
 		String userName;
+		int counter = 0;
 //		String gameMode;
 		System.out.println("Dang Man, Let's Play Hang Man!");
+		HangmanVisuals.loadHangMen();
+		HangmanVisuals.update(guessedLetters, "");
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
 		String easyWord;
 		ArrayList<String> easywords = FileHelper.readFromFile();
-		String randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
+		String randomStringFromEasyWords = easywords.get((int) Math.floor(Math.random() * easywords.size()));
 		System.out.println(randomStringFromEasyWords);
 		String partialWord = "";
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
 			partialWord += "_";
 		}
 		for (int i = 0; (i < 10 && !partialWord.equalsIgnoreCase(randomStringFromEasyWords)); i++) {
-		
-		
-		
-		char guessedSingleString = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}").charAt(0);
-		guessedSingleString = Character.toUpperCase(guessedSingleString);
-		if(stringHasChar(randomStringFromEasyWords, guessedSingleString)) {
-			partialWord = (updatePartialWord(guessedSingleString, partialWord, randomStringFromEasyWords));
-		System.out.println(partialWord);
-			
+
+			char guessedSingleString = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}")
+					.charAt(0);
+			guessedSingleString = Character.toUpperCase(guessedSingleString);
+			if (stringHasChar(randomStringFromEasyWords, guessedSingleString)) {
+				partialWord = (updatePartialWord(guessedSingleString, partialWord, randomStringFromEasyWords));
+				System.out.println(partialWord);
+				counter++;
+			} else {
+				System.out.println("Oops, this word doesn't contain this letter...");
+				HangmanVisuals.update(guessedLetters, partialWord);
+				counter++;
+			}
 		}
-		}
-//		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
-//		gameMode = scnr.nextLine();
-		//This is where
-		
-		//Loading all of our graphics into hangMen
-//		HangmanVisuals.loadHangMen();
-		
-		//Showing first graphic
-//		HangmanVisuals.update(guessedLetters);
-		
-		
+
 	}
 
 	static String replaceSingleChar(String inputString, char newChar, int newCharIndex) {
