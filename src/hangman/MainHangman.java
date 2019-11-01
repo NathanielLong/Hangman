@@ -33,7 +33,11 @@ public class MainHangman {
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
 			partialWord += "_";
 		}
+<<<<<<< HEAD
 		while ((guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randomStringFromEasyWords))) {
+=======
+		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randomStringFromEasyWords)) {
+>>>>>>> 4c27675fa2d874aecee2afd8844f25934f74218f
 
 			char guessedSingleString = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}")
 					.charAt(0);
