@@ -22,14 +22,27 @@ public class MainHangman {
 		String userName;
 		int counter = 0;
 //		String gameMode;
+		String randomStringFromEasyWords = null;
+		int missedCounter = 0;
 		System.out.println("Dang Man, Let's Play Hang Man!");
 		HangmanVisuals.loadHangMen();
 		HangmanVisuals.update(guessedLetters, "");
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
+		System.out.println("Please enter a character: ");
+		String guessedCharacter = scnr.nextLine();
 		String easyWord;
 		ArrayList<String> easywords = FileHelper.readFromFile();
+<<<<<<< HEAD
+		
+		do {
+		
+		if(randomStringFromEasyWords.contains(guessedCharacter)) {
+			
+		randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
+=======
 		String randomStringFromEasyWords = easywords.get((int) Math.floor(Math.random() * easywords.size()));
+>>>>>>> 4976b50ba6fb111113f6492768af3115277f6397
 		System.out.println(randomStringFromEasyWords);
 		String partialWord = "";
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
@@ -52,7 +65,28 @@ public class MainHangman {
 				counter++;
 			}
 		}
+<<<<<<< HEAD
+			
+		} else {
+			//counts # of incorrect guesses
+			missedCounter++;
+		}
+//		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
+//		gameMode = scnr.nextLine();
+		//This is where
+		
+		//Loading all of our graphics into hangMen
+//		HangmanVisuals.loadHangMen();
+		
+		//Showing first graphic
+//		HangmanVisuals.update(guessedLetters);
+		
+		}while(missedCounter != 5);
+		
+		
+=======
 
+>>>>>>> 4976b50ba6fb111113f6492768af3115277f6397
 	}
 
 	static String replaceSingleChar(String inputString, char newChar, int newCharIndex) {
