@@ -6,7 +6,6 @@ public class EasyWords {
 
 	public EasyWords() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public EasyWords(String easyWord) {

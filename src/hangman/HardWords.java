@@ -6,7 +6,6 @@ public class HardWords {
 
 	public HardWords() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public HardWords(String hardWord) {
@@ -24,7 +23,7 @@ public class HardWords {
 
 	@Override
 	public String toString() {
-		return "HardWords [hardWord=" + hardWord + "]";
+		return hardWord;
 	}
 
 }

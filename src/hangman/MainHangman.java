@@ -11,17 +11,24 @@ import java.util.Scanner;
 public class MainHangman {
 	
 	static ArrayList<Character> guessedLetters = new ArrayList<>(); //Contains all characters that have already been guessed by the player
-	
+//	static ArrayList<String> easywords = new ArrayList<>();
 	public static void main(String[] args) {
 		
 		Scanner scnr = new Scanner(System.in);
 		String userName;
-		String gameMode;
+//		String gameMode;
 		System.out.println("Dang Man, Let's Play Hang Man!");
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
-		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
-		gameMode = scnr.nextLine();
+		String easyWord;
+		ArrayList<String> easywords = FileHelper.readFromFile();
+		String randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
+		System.out.println(randomStringFromEasyWords);
+		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
+			System.out.print("_ ");
+		}
+//		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
+//		gameMode = scnr.nextLine();
 		//This is where
 		
 		//Loading all of our graphics into hangMen
@@ -33,7 +40,11 @@ public class MainHangman {
 		
 	}
 	
+	static String replaceSingleChar(String inputString, char newChar, int newCharIndex) {
+		return inputString.substring(0,newCharIndex)+newChar+inputString.substring(newCharIndex + 1);
+	}
 	
 	
+
 
 }
