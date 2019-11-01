@@ -34,7 +34,6 @@ public class MainHangman {
 		String partialWord = "";
 		for (int i = 0; i < randEasyWord.length(); i++) {
 			partialWord += "_";
-		
 		}
 
 		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randEasyWord)) {
@@ -42,6 +41,7 @@ public class MainHangman {
 			while(!done) {
 			guessedChar = Validator.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
 					.charAt(0);
+<<<<<<< HEAD
 			if(randEasyWord.indexOf(guessedChar) != -1) {
 				System.out.println("You have already guessed this. Please enter another letter: ");
 			} else {
@@ -53,6 +53,14 @@ public class MainHangman {
 				partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
 				for (int i = 0; i < partialWord.length(); i++)
 					System.out.print(partialWord.charAt(i) + " ");
+=======
+			guessedSingleString = Character.toUpperCase(guessedSingleString);
+			if (Hangman.stringHasChar(randEasyWord, guessedSingleString)) {
+				partialWord = (Hangman.updatePartialWord(guessedSingleString, partialWord, randEasyWord));
+				HangmanVisuals.update(guessedLetters, partialWord);
+//				for (int i = 0; i < partialWord.length(); i++)
+//					System.out.print(partialWord.charAt(i) + " ");
+>>>>>>> 9dd0229f4086635b6510b09183eea4f064b547e4
 //				System.out.println(partialWord);
 				counter++;
 			} else {
