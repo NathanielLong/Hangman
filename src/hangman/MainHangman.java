@@ -24,7 +24,9 @@ public class MainHangman {
 		ArrayList<String> easywords = FileHelper.readFromFile();
 		String randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
 		System.out.println(randomStringFromEasyWords);
-		
+		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
+			System.out.print("_ ");
+		}
 //		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
 //		gameMode = scnr.nextLine();
 		//This is where
