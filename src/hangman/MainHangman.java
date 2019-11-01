@@ -28,7 +28,7 @@ public class MainHangman {
 		String easyWord;
 		ArrayList<String> easywords = FileHelper.readFromFile();
 		String randomStringFromEasyWords = easywords.get((int) Math.floor(Math.random() * easywords.size()));
-		System.out.println(randomStringFromEasyWords);
+//		System.out.println(randomStringFromEasyWords);
 		String partialWord = "";
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
 			partialWord += "_";
@@ -36,12 +36,12 @@ public class MainHangman {
 
 		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randomStringFromEasyWords)) {
 
-
 			char guessedSingleString = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}")
 					.charAt(0);
 			guessedSingleString = Character.toUpperCase(guessedSingleString);
 			if (Hangman.stringHasChar(randomStringFromEasyWords, guessedSingleString)) {
 				partialWord = (Hangman.updatePartialWord(guessedSingleString, partialWord, randomStringFromEasyWords));
+
 				System.out.println(partialWord);
 				counter++;
 			} else {
