@@ -26,15 +26,10 @@ public class HangmanVisuals {
 			file = path.toFile();
 			try {
 				br = new BufferedReader(new FileReader(file));
-				// int yCounter = 0;
 				for (int y = 0; y < hangMen[i].length; y++) {
 					hangMen[i][y] = br.readLine();
 				}
-				/*
-				 * while (br.ready()) {
-				 * 
-				 * yCounter++; }
-				 */
+				
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Warning: Hangman graphic file #" + i + " not found");
@@ -67,10 +62,13 @@ public class HangmanVisuals {
 
 		// Showing guessed letters
 		System.out.println("Guessed letters:");
-		for (Character c : guessedLetters) {
-			System.out.print(c + ", ");
+		if (!guessedLetters.isEmpty()) {
+			for (Character c : guessedLetters) {
+				System.out.print(c + ", ");
+			}
+			System.out.println("");
 		}
-		System.out.println("");
+		
 	}
 
 	private static void clearConsole() {
