@@ -21,12 +21,21 @@ public class MainHangman {
 		Scanner scnr = new Scanner(System.in);
 		String userName;
 //		String gameMode;
+		String randomStringFromEasyWords = null;
+		int missedCounter = 0;
 		System.out.println("Dang Man, Let's Play Hang Man!");
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
+		System.out.println("Please enter a character: ");
+		String guessedCharacter = scnr.nextLine();
 		String easyWord;
 		ArrayList<String> easywords = FileHelper.readFromFile();
-		String randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
+		
+		do {
+		
+		if(randomStringFromEasyWords.contains(guessedCharacter)) {
+			
+		randomStringFromEasyWords = easywords.get((int)Math.floor(Math.random() * easywords.size()));
 		System.out.println(randomStringFromEasyWords);
 		String partialWord = "";
 		for (int i = 0; i < randomStringFromEasyWords.length(); i++) {
@@ -44,6 +53,11 @@ public class MainHangman {
 			
 		}
 		}
+			
+		} else {
+			//counts # of incorrect guesses
+			missedCounter++;
+		}
 //		System.out.println("Please select 'Hard mode' or 'Easy mode': ");
 //		gameMode = scnr.nextLine();
 		//This is where
@@ -53,6 +67,8 @@ public class MainHangman {
 		
 		//Showing first graphic
 //		HangmanVisuals.update(guessedLetters);
+		
+		}while(missedCounter != 5);
 		
 		
 	}
