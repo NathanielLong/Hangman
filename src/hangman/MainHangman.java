@@ -40,7 +40,11 @@ public class MainHangman {
 		
 	}
 	
+	static String replaceSingleChar(String inputString, char newChar, int newCharIndex) {
+		return inputString.substring(0,newCharIndex)+newChar+inputString.substring(newCharIndex + 1);
+	}
 	
 	
+
 
 }
