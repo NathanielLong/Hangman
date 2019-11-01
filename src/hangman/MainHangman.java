@@ -33,7 +33,6 @@ public class MainHangman {
 		String partialWord = "";
 		for (int i = 0; i < randEasyWord.length(); i++) {
 			partialWord += "_";
-		
 		}
 
 		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randEasyWord)) {
@@ -43,8 +42,9 @@ public class MainHangman {
 			guessedSingleString = Character.toUpperCase(guessedSingleString);
 			if (Hangman.stringHasChar(randEasyWord, guessedSingleString)) {
 				partialWord = (Hangman.updatePartialWord(guessedSingleString, partialWord, randEasyWord));
-				for (int i = 0; i < partialWord.length(); i++)
-					System.out.print(partialWord.charAt(i) + " ");
+				HangmanVisuals.update(guessedLetters, partialWord);
+//				for (int i = 0; i < partialWord.length(); i++)
+//					System.out.print(partialWord.charAt(i) + " ");
 //				System.out.println(partialWord);
 				counter++;
 			} else {
