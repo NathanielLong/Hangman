@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 public class FileHelper {
 	
 	public static void readFromFile() {
-		String fileName = "write_stuff.txt";
+		String fileName = "easywordslist.txt";
 		Path path = Paths.get("resources", fileName);
 		File file = path.toFile();
 		try {
