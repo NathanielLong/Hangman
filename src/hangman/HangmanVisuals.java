@@ -50,33 +50,41 @@ public class HangmanVisuals {
 
 		// Clearing out console
 		clearConsole();
+		
+		for (int i = 0; i < 35; i++) {
+			System.out.print(' ');
+		}
+		System.out.println("DANG MAN!  IT'S HANGMAN!");
 
 		// Showing relevant hangman graphic
+		for (int i = 0; i <= 4; i++) {
+			System.out.println("");
+		}
 		for (String y : hangMen[guessedLetters.size()]) {
+			for (int i = 0; i < 40; i++) {
+				System.out.print(' ');
+			}
 			System.out.println(y);
 		}
 
-		// Showing word
-		printPartialWord(partialWord);
-		System.out.println("");
 
 		// Showing guessed letters
-		System.out.println("Guessed letters:");
 		if (!guessedLetters.isEmpty()) {
+			System.out.println("Guessed letters:");
 			for (Character c : guessedLetters) {
 				System.out.print(c + ", ");
 			}
 			System.out.println("");
 		}
 		
+		// Showing word
+		printPartialWord(partialWord);
+		System.out.println("");
 	}
 	
 	private static void printPartialWord(String partialWord) {
 		for (char c :partialWord.toCharArray()) {
-			System.out.print(c);
-			if (c == '_') {
-				System.out.print(' ');
-			}
+			System.out.print("" + c + ' ');
 		}
 	}
 
