@@ -43,7 +43,6 @@ public class MainHangman {
 			if (stringHasChar(randomStringFromEasyWords, guessedSingleString)) {
 				partialWord = (updatePartialWord(guessedSingleString, partialWord, randomStringFromEasyWords));
 				System.out.println(partialWord);
-				guessedLetters.add(guessedSingleString);
 				counter++;
 			} else {
 				System.out.println("Oops, this word doesn't contain this letter...");
