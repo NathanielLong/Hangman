@@ -10,20 +10,21 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class FileHelper {
 	
-	public static void readFromFile() {
-		String fileName = "easywordslist.txt";
-		Path path = Paths.get("resources", fileName);
+	public static ArrayList<String> readFromFile() {
+		ArrayList<String> easywords = new ArrayList<>();
+		String fileName = "easywordlist.txt";
+		Path path = Paths.get("easywordlist", fileName);
 		File file = path.toFile();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
 
-			String line = br.readLine();
-			while (line != null) {
-				System.out.println(line);
-				line = br.readLine();
+			String line;
+			while ((line = br.readLine()) != null) {
+				easywords.add(line);
 			}
 
 			br.close();
@@ -34,7 +35,7 @@ public class FileHelper {
 
 			System.out.println("Something went wrong while reading from the file...");
 		}
-
+		return easywords;
 	}
 
 	public static void writeToFile() {
