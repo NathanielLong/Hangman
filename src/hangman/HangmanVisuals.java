@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class HangmanVisuals {
 
-	private static String[][] hangMen = new String[9][20];
+	private static String[][] hangMen = new String[10][20];
 
 	public static void loadHangMen() {
 
