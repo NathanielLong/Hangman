@@ -41,7 +41,7 @@ public class MainHangman {
 			while (!done) {
 				guessedChar = Validator
 						.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}").charAt(0);
-				if (randEasyWord.indexOf(guessedChar) != -1) {
+				if ((randEasyWord.indexOf(guessedChar) != -1) || (partialWord.indexOf(guessedChar) != -1)) {
 					System.out.println("You have already guessed this. Please enter another letter: ");
 				} else {
 					done = true;
