@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 public class FileHelper {
 	
-<<<<<<< Updated upstream
 	public static ArrayList<String> readFromFile() {
 		ArrayList<String> easywords = new ArrayList<>();
 		String fileName = "easywordlist.txt";
@@ -26,24 +25,6 @@ public class FileHelper {
 			String line;
 			while ((line = br.readLine()) != null) {
 				easywords.add(line);
-=======
-	public static void readFromFile() {   
-		
-		
-		
-		String fileName = "easywordlist.txt";
-		Path path = Paths.get("easywordylist", fileName);
-		File file = path.toFile();
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(file));
-			ArrayList<EasyWords> easyWords = new ArrayList<>();
-			
-			while()
-			String line = br.readLine();
-			while (line != null) {
-				System.out.println(line);
-				line = br.readLine();
->>>>>>> Stashed changes
 			}
 
 			br.close();
