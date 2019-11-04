@@ -21,7 +21,7 @@ public class FileHelper {
 
 	public static ArrayList<String> readFromFile() {
 		ArrayList<String> easywords = new ArrayList<>();
-		Path path = Paths.get("easywordlist", fileName);
+		Path path = Paths.get("easywordlist", "lotsOfWords.txt");
 		File file = path.toFile();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
