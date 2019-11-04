@@ -19,6 +19,7 @@ public class MainHangman {
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
+		int missedCounter = 0;
 		int counter = 0;
 		char guessedChar = 0;
 //		String gameMode;
@@ -30,42 +31,44 @@ public class MainHangman {
 		String easyWord;
 		ArrayList<String> easywords = FileHelper.readFromFile();
 		String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
-//		System.out.println(randomStringFromEasyWords);
 		String partialWord = "";
+		
 		for (int i = 0; i < randEasyWord.length(); i++) {
 			partialWord += "_";
 		}
-
-		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randEasyWord)) {
+		boolean end = false;
+		while (!end) {
 			boolean done = false;
 			while (!done) {
 				guessedChar = Validator
 						.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}").charAt(0);
 				guessedChar = Character.toUpperCase(guessedChar);
-//				for(int i = 0; i < guessedLetters.size(); i++) {
 				if (guessedLetters.contains(guessedChar)) {
 					System.out.println("You have already guessed this. Please enter another letter: ");
-
-//				if(guessedLetters.get(i).getName(i).contains(guessedChar)) {
-//				if (guessedLetters.contains(guessedChar) != -1) {
 				} else {
 					done = true;
 				}
 			}
 
 			// Removed this because all it did was ask for their input again
-//			guessedChar = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}").charAt(0);
+			// guessedChar = Validator.getStringMatchingRegex(scnr, "Please enter a letter:
+			// ", "[A-za-z]{1}").charAt(0);
 			guessedChar = Character.toUpperCase(guessedChar);
 			if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
 				partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
 				HangmanVisuals.update(guessedLetters, partialWord);
 				counter++;
+				end = false;
 			} else {
 				System.out.println("Oops, this word doesn't contain this letter...");
 				guessedLetters.add(guessedChar);
 				HangmanVisuals.update(guessedLetters, partialWord);
 				counter++;
+				if (missedCounter == 8) {
+					end = true;
+				}
 			}
+
 		}
 
 	}
