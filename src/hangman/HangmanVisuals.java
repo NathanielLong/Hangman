@@ -64,11 +64,9 @@ public class HangmanVisuals {
 
 		int numGuessedLetters = guessedLetters.size();
 
-		// if (guessedLetters.size() < )
-
 		if (numGuessedLetters < hangMen.length) {
 			for (String y : hangMen[guessedLetters.size()]) {
-				for (int i = 0; i < 40; i++) {
+				for (int i = 0; i < 50; i++) {
 					System.out.print(' ');
 				}
 				System.out.println(y);
@@ -91,24 +89,38 @@ public class HangmanVisuals {
 	}
 
 	public static String getUserName() {
-		return Validator.getString(new Scanner(System.in), "Please enter your name: ");
+		Scanner scn = new Scanner(System.in);
+		String username = Validator.getString(new Scanner(System.in), "Please enter your name: ");
+		//scn.close();
+		return username;
 	}
 	
 	public static Difficulty getDiffLevel() {
+		Boolean selected = false;
+		//Scanner scnr = new Scanner(System.in);
+		Difficulty level = Difficulty.EASY;
 		do
 		{
 			switch (Validator.getString(new Scanner(System.in), "Please select a difficulty level to determine word length.\n"
 					+ "You can enter 'easy' (0-5 letters), 'medium'(6-10 letters), or 'hard' (10-14 letters): ").toLowerCase()) {
 			case "easy":
-				return Difficulty.EASY;
+				level = Difficulty.EASY;
+				selected = true;
+				break;
 			case "medium":
-				return Difficulty.MEDIUM;
+				level = Difficulty.MEDIUM;
+				selected = true;
+				break;
 			case "hard":
-				return Difficulty.HARD;
+				level = Difficulty.HARD;
+				selected = true;
+				break;
 				default:
 					System.out.println("Invalid option entered");
+					break;
 			}
-		} while (true);
+		} while (!selected);
+		return level;
 	}
 	
 	private static void printPartialWord(String partialWord) {
