@@ -24,7 +24,7 @@ public class MainHangman {
 		userName = scnr.nextLine();
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
-			counter--;
+			counter = -100;
 		}
 		if (userName.equalsIgnoreCase("Rob")) {
 			System.out.println("Bro, you just get an automatic win. You don't even have to play...");
@@ -63,9 +63,12 @@ public class MainHangman {
 				if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
 					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
 					HangmanVisuals.update(guessedLetters, partialWord);
+					counter++;
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
+						//delete this part
+						System.out.println("Here are your points: " + counter);
 						break;
 					}
 					end = false;
