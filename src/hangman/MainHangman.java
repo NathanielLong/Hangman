@@ -45,7 +45,7 @@ public class MainHangman {
 			for (int i = 0; i < randEasyWord.length(); i++) {
 				partialWord += "_";
 			}
-			HangmanVisuals.update(guessedLetters, "");
+			HangmanVisuals.update(guessedLetters, partialWord);
 			boolean end = false;
 			while (!end) {
 				boolean done = false;
