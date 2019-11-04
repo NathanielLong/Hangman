@@ -22,7 +22,7 @@ public class MainHangman {
 		int counter = 0;
 		char guessedChar = 0;
 //		String gameMode;
-		System.out.println("Dang Man, Let's Play Hang Man!");
+//		System.out.println("Dang Man, Let's Play Hang Man!");
 		HangmanVisuals.loadHangMen();
 		HangmanVisuals.update(guessedLetters, "");
 		System.out.println("Please enter your name: ");
@@ -41,14 +41,20 @@ public class MainHangman {
 			while (!done) {
 				guessedChar = Validator
 						.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}").charAt(0);
-				if ((randEasyWord.indexOf(guessedChar) != -1) || (partialWord.indexOf(guessedChar) != -1)) {
+				guessedChar = Character.toUpperCase(guessedChar);
+//				for(int i = 0; i < guessedLetters.size(); i++) {
+				if (guessedLetters.contains(guessedChar)) {
 					System.out.println("You have already guessed this. Please enter another letter: ");
+
+//				if(guessedLetters.get(i).getName(i).contains(guessedChar)) {
+//				if (guessedLetters.contains(guessedChar) != -1) {
 				} else {
 					done = true;
 				}
 			}
-			
-			guessedChar = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}").charAt(0);
+
+			// Removed this because all it did was ask for their input again
+//			guessedChar = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}").charAt(0);
 			guessedChar = Character.toUpperCase(guessedChar);
 			if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
 				partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
