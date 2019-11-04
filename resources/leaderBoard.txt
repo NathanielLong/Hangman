@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 Total Wins:7
 Total Losses:4
 Nate has 3 wins!
 nina has 4 wins!
+=======
+Total Wins:5
+Total Losses:3
+Nate has 9 wins!
+>>>>>>> 8fe6cad03923863b65b157de1626164d76cb54d5

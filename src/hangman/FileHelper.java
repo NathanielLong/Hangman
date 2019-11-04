@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class FileHelper {
-	public static String fileName = "easywordlist.txt";
+	public static String fileName;
 	
 	public static void setFileName(String iFileName) {
 		fileName = iFileName;
@@ -21,7 +21,7 @@ public class FileHelper {
 
 	public static ArrayList<String> readFromFile() {
 		ArrayList<String> easywords = new ArrayList<>();
-		Path path = Paths.get("easywordlist", "lotsOfWords.txt");
+		Path path = Paths.get("resources", "lotsOfWords.txt");
 		File file = path.toFile();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));

@@ -1,5 +1,6 @@
 package hangman;
 
+<<<<<<< HEAD
 import java.util.Scanner;
 
 public class Hangman {
@@ -29,6 +30,13 @@ public class Hangman {
 
 	}
 
+=======
+public class Hangman {	
+	/*
+	 * Replaces a single character in inputString at location specified by newCharIndex with character
+	 * specified by newChar
+	 */
+>>>>>>> 8fe6cad03923863b65b157de1626164d76cb54d5
 	static String replaceSingleChar(String inputString, char newChar, int newCharIndex) {
 		return inputString.substring(0, newCharIndex) + newChar + inputString.substring(newCharIndex + 1);
 	}
