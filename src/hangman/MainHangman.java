@@ -15,7 +15,7 @@ public class MainHangman {
 		
 		int addedPoints = 0;
 		
-		userName = HangmanVisuals.getUserName();
+		userName = HangmanVisuals.getUserName(scnr);
 		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
@@ -36,7 +36,7 @@ public class MainHangman {
 			
 			int minLength = 0, maxLength = 0;
 			
-			switch(HangmanVisuals.getDiffLevel()) {
+			switch(HangmanVisuals.getDiffLevel(scnr)) {
 			case EASY:
 				maxLength = 5;
 				addedPoints = 1;
