@@ -18,9 +18,10 @@ public class MainHangman {
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
-		int counter = 0;
 		char guessedChar = 0;
 		char userReply;
+		
+		int addedPoints = 0;
 		
 		userName = HangmanVisuals.getUserName();
 //		System.out.println("Please enter your name: ");
@@ -28,11 +29,9 @@ public class MainHangman {
 		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
-			counter--;
 		}
 		if (userName.equalsIgnoreCase("Rob")) {
 			System.out.println("Bro, you just get an automatic win. You don't even have to play...");
-			counter++;
 		}
 		if (userName.equalsIgnoreCase("Nathaniel")) {
 			System.out.println("Haha, I'm gonna lose...");
@@ -49,14 +48,17 @@ public class MainHangman {
 			switch(HangmanVisuals.getDiffLevel()) {
 			case EASY:
 				maxLength = 5;
+				addedPoints = 1;
 				break;
 			case MEDIUM:
 				minLength = 6;
 				maxLength = 9;
+				addedPoints = 2;
 				break;
 			case HARD:
 				minLength = 10;
 				maxLength = 14;
+				addedPoints = 3;
 				break;
 			}
 			
@@ -91,7 +93,7 @@ public class MainHangman {
 					if (partialWord.equals(hiddenWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-						LeaderBoard.addVictory(userName, 1);
+						LeaderBoard.addVictory(userName, addedPoints);
 
 						System.out.println("Would you like to see the leader board? (y/n): ");
 						userReply = scnr.nextLine().charAt(0);
