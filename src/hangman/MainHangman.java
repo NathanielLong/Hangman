@@ -1,12 +1,5 @@
 package hangman;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +9,6 @@ public class MainHangman {
 		LeaderBoard.loadLeaderBoard();
 
 		Scanner scnr = new Scanner(System.in);
-		StringBuilder sb = new StringBuilder();
 		String userName;
 		char guessedChar = 0;
 		char userReply;
@@ -24,8 +16,6 @@ public class MainHangman {
 		int addedPoints = 0;
 		
 		userName = HangmanVisuals.getUserName();
-//		System.out.println("Please enter your name: ");
-//		userName = scnr.nextLine();
 		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
@@ -63,7 +53,6 @@ public class MainHangman {
 				break;
 			}
 			
-			//String hiddenWord = wordBank.get((int) Math.floor(Math.random() * wordBank.size()));
 			String hiddenWord = Selector.getWordByLengthRange(minLength, maxLength, wordBank);
 			String partialWord = "";
 

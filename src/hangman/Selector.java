@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Selector {
 	public static String getWordByLengthRange(int minLength, int maxLength, ArrayList<String> options) {
-		String chosenWord = "";
 		String tempWord = "";
 		boolean foundNumInRange = false;
 		ArrayList<Integer> alreadyCheckedIndexes = new ArrayList<>();
