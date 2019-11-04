@@ -95,8 +95,7 @@ public class MainHangman {
 						System.out.println("Hurray, you made it!");
 						LeaderBoard.addVictory(userName, addedPoints);
 
-						System.out.println("Would you like to see the leader board? (y/n): ");
-						userReply = scnr.nextLine().charAt(0);
+						userReply = Validator.getString(scnr, "Would you like to see the leader board? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
 						}
@@ -113,7 +112,7 @@ public class MainHangman {
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + hiddenWord);
 						LeaderBoard.addLoss();
-						userReply = Validator.getString(scnr, "Would you like to see the leader board? (y/n): ").charAt(0);
+						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
 						}
@@ -121,8 +120,7 @@ public class MainHangman {
 				}
 
 			}
-			System.out.println("Would you like to continue? (y/n) ");
-			userReply = scnr.nextLine().charAt(0);
+		userReply = Validator.getString(scnr, "Would you like to play again? (y/n): ").charAt(0);
 		} while (userReply == 'y');
 		System.out.println("Please come come again!");
 		LeaderBoard.saveLeaderBoard();

@@ -1,3 +1,4 @@
-Total Wins:3
+Total Wins:5
 Total Losses:0
-Nate has 3 wins!
+Nate has 5 wins!
+phil has 1 wins!
