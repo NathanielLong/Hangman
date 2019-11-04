@@ -14,12 +14,8 @@ public class MainHangman {
 
 	public static void main(String[] args) {
 		LeaderBoard.loadLeaderBoard();
-<<<<<<< HEAD
-
-=======
 		Difficulty dLevel = Difficulty.EASY;
-			
->>>>>>> 79ce848216d0dc57d8d533b36a237ff368ff727d
+		
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
