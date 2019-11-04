@@ -33,6 +33,7 @@ public class MainHangman {
 		}
 		if (userName.equalsIgnoreCase("Nathaniel")) {
 			System.out.println("Haha, I'm gonna lose...");
+			counter = -101;
 		}
 		do {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
@@ -68,12 +69,7 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-<<<<<<< HEAD
-						//delete this part
-						System.out.println("Here are your points: " + counter);
-=======
 						LeaderBoard.addVictory(userName, 1);
->>>>>>> ef7c24d1f930ffdeaa2ad7f04bc0fdaf7bfed168
 						break;
 					}
 					end = false;
