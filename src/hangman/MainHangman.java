@@ -39,6 +39,7 @@ public class MainHangman {
 		
 		do {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
+			ArrayList<Character> correctLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
 			ArrayList<String> wordBank = FileHelper.readFromFile();
@@ -81,7 +82,11 @@ public class MainHangman {
 					guessedChar = Character.toUpperCase(guessedChar);
 					if (guessedLetters.contains(guessedChar)) {
 						System.out.println("You have already guessed this. Please enter another letter: ");
+					} 
+					else if (correctLetters.contains(guessedChar)) {
+						System.out.println("You have already guessed this. Please enter another letter: ");
 					} else {
+						correctLetters.add(guessedChar);
 						done = true;
 					}
 				}
@@ -94,6 +99,7 @@ public class MainHangman {
 						end = true;
 						System.out.println("Hurray, you made it!");
 						LeaderBoard.addVictory(userName, addedPoints);
+						LeaderBoard.saveLeaderBoard();
 
 						userReply = Validator.getString(scnr, "Would you like to see the leader board? (y/n): ").charAt(0);
 						if (userReply == 'y') {
@@ -112,6 +118,7 @@ public class MainHangman {
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + hiddenWord);
 						LeaderBoard.addLoss();
+						LeaderBoard.saveLeaderBoard();
 						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
