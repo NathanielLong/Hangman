@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 Total Wins:6
 Total Losses:3
 naina 1
 nate 3
 nina 4
+=======
+Total Wins:1
+Total Losses:0
+Nate has 1 wins!
+>>>>>>> d7e84bade098bccf01ba4d86857e73e0dc0101ae

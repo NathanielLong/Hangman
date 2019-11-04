@@ -65,7 +65,7 @@ public class LeaderBoard {
 				output.println("Total Losses:" + totalLosses);
 				for (String s : leaderBoardMap.keySet())
 				{
-					output.println(s + " " + leaderBoardMap.get(s));
+					output.println(s + " has " + leaderBoardMap.get(s) + " wins!");
 				}
 			}
 			catch (IOException e) {
