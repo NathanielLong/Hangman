@@ -1,3 +1,2 @@
-Total Wins:1
-Total Losses:2
-
+Total Wins:0
+Total Losses:1

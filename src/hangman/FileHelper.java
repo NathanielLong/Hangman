@@ -31,7 +31,7 @@ public class FileHelper {
 				easywords.add(line);
 			}
 
-			br.close();
+			//br.close();
 		} catch (FileNotFoundException e) {
 
 			System.out.println("Something went wrong with your file...");
