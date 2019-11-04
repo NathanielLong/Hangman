@@ -14,15 +14,19 @@ public class MainHangman {
 
 	public static void main(String[] args) {
 		LeaderBoard.loadLeaderBoard();
-		
+		Difficulty dLevel = Difficulty.EASY;
+			
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
 		int counter = 0;
 		char guessedChar = 0;
 		char userReply;
-		System.out.println("Please enter your name: ");
-		userName = scnr.nextLine();
+		
+		userName = HangmanVisuals.getUserName();
+//		System.out.println("Please enter your name: ");
+//		userName = scnr.nextLine();
+		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
 			counter--;
@@ -35,17 +39,37 @@ public class MainHangman {
 			System.out.println("Haha, I'm gonna lose...");
 			counter = -101;
 		}
+		
 		do {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
-			ArrayList<String> easywords = FileHelper.readFromFile();
-			String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
+			ArrayList<String> wordBank = FileHelper.readFromFile();
+			
+			int minLength = 0, maxLength = 0;
+			
+			switch(HangmanVisuals.getDiffLevel()) {
+			case EASY:
+				maxLength = 5;
+				break;
+			case MEDIUM:
+				minLength = 6;
+				maxLength = 9;
+				break;
+			case HARD:
+				minLength = 10;
+				maxLength = 14;
+				break;
+			}
+			
+			//String hiddenWord = wordBank.get((int) Math.floor(Math.random() * wordBank.size()));
+			String hiddenWord = Selector.getWordByLengthRange(minLength, maxLength, wordBank);
 			String partialWord = "";
 
-			for (int i = 0; i < randEasyWord.length(); i++) {
+			for (int i = 0; i < hiddenWord.length(); i++) {
 				partialWord += "_";
 			}
+			
 			HangmanVisuals.update(guessedLetters, partialWord);
 			boolean end = false;
 			while (!end) {
@@ -54,21 +78,25 @@ public class MainHangman {
 					guessedChar = Validator
 							.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
 							.charAt(0);
-					guessedChar = Character.toLowerCase(guessedChar);
+					guessedChar = Character.toUpperCase(guessedChar);
 					if (guessedLetters.contains(guessedChar)) {
 						System.out.println("You have already guessed this. Please enter another letter: ");
 					} else {
 						done = true;
 					}
 				}
-				guessedChar = Character.toLowerCase(guessedChar);
-				if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
-					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
+				
+				guessedChar = Character.toUpperCase(guessedChar);
+				if (Hangman.stringHasChar(hiddenWord, guessedChar)) {
+					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, hiddenWord));
 					HangmanVisuals.update(guessedLetters, partialWord);
-					if (partialWord.equals(randEasyWord)) {
+					if (partialWord.equals(hiddenWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 79ce848216d0dc57d8d533b36a237ff368ff727d
 						LeaderBoard.addVictory(userName, 1);
 						break;
 					}
@@ -81,7 +109,7 @@ public class MainHangman {
 					if (missedCounter == 9) {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
-						System.out.println("Here was the correct word: " + randEasyWord);
+						System.out.println("Here was the correct word: " + hiddenWord);
 						LeaderBoard.addLoss();
 					}
 				}
