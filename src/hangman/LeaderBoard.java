@@ -46,7 +46,7 @@ public class LeaderBoard {
 					}
 				}
 				lineCounter++;
-				br.close();
+//				br.close();
 			}
 
 		} catch (IOException e) {

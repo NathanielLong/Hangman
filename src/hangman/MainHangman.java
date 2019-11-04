@@ -113,7 +113,6 @@ public class MainHangman {
 					// Counter of misses that increments 
 					missedCounter++;
 					// User cannot miss more 9 times
-					missedCounter++;
 					if (missedCounter == 9) {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
@@ -123,6 +122,7 @@ public class MainHangman {
 						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
+							System.out.println(LeaderBoard.percentageWins());
 						}
 					}
 				}
