@@ -58,7 +58,7 @@ public class HangmanVisuals {
 		// Clearing out console
 		clearConsole();
 
-		for (int i = 0; i < 45; i++) {
+		for (int i = 0; i < 46; i++) {
 			System.out.print(' ');
 		}
 		System.out.println("DANG MAN!  IT'S HANGMAN!");
