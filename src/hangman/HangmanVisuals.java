@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class HangmanVisuals {
 
@@ -89,12 +90,34 @@ public class HangmanVisuals {
 		}
 	}
 
+	public static String getUserName() {
+		return Validator.getString(new Scanner(System.in), "Please enter your name: ");
+	}
+	
+	public static Difficulty getDiffLevel() {
+		do
+		{
+			switch (Validator.getString(new Scanner(System.in), "Please select a difficulty level to determine word length.\n"
+					+ "  You can enter 'easy' (0-5 letters), 'medium'(6-10 letters), or 'hard' (10-14 letters)").toLowerCase()) {
+			case "easy":
+				return Difficulty.EASY;
+			case "medium":
+				return Difficulty.MEDIUM;
+			case "hard":
+				return Difficulty.HARD;
+				default:
+					System.out.println("Invalid option entered");
+			}
+		} while (true);
+	}
+	
 	private static void printPartialWord(String partialWord) {
 		for (char c : partialWord.toCharArray()) {
 			System.out.print("" + c + ' ');
 		}
 	}
 
+	
 	private static void clearConsole() {
 		try {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
