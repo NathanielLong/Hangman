@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class MainHangman {
 
 	public static void main(String[] args) {
-
+		LeaderBoard.loadLeaderBoard();
+		
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
@@ -37,7 +38,6 @@ public class MainHangman {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
-			HangmanVisuals.update(guessedLetters, "");
 			ArrayList<String> easywords = FileHelper.readFromFile();
 			String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
 			String partialWord = "";
@@ -45,6 +45,7 @@ public class MainHangman {
 			for (int i = 0; i < randEasyWord.length(); i++) {
 				partialWord += "_";
 			}
+			HangmanVisuals.update(guessedLetters, "");
 			boolean end = false;
 			while (!end) {
 				boolean done = false;
@@ -67,8 +68,12 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
+<<<<<<< HEAD
 						//delete this part
 						System.out.println("Here are your points: " + counter);
+=======
+						LeaderBoard.addVictory(userName, 1);
+>>>>>>> ef7c24d1f930ffdeaa2ad7f04bc0fdaf7bfed168
 						break;
 					}
 					end = false;
@@ -81,6 +86,7 @@ public class MainHangman {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + randEasyWord);
+						LeaderBoard.addLoss();
 					}
 				}
 
@@ -89,6 +95,7 @@ public class MainHangman {
 			userReply = scnr.nextLine().charAt(0);
 		} while (userReply == 'y');
 		System.out.println("Please come come again!");
+		LeaderBoard.saveLeaderBoard();
 	}
 
 }
