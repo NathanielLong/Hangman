@@ -53,14 +53,14 @@ public class MainHangman {
 					guessedChar = Validator
 							.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
 							.charAt(0);
-					guessedChar = Character.toUpperCase(guessedChar);
+					guessedChar = Character.toLowerCase(guessedChar);
 					if (guessedLetters.contains(guessedChar)) {
 						System.out.println("You have already guessed this. Please enter another letter: ");
 					} else {
 						done = true;
 					}
 				}
-				guessedChar = Character.toUpperCase(guessedChar);
+				guessedChar = Character.toLowerCase(guessedChar);
 				if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
 					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
 					HangmanVisuals.update(guessedLetters, partialWord);
@@ -68,12 +68,8 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-<<<<<<< HEAD
-						//delete this part
-						System.out.println("Here are your points: " + counter);
-=======
+
 						LeaderBoard.addVictory(userName, 1);
->>>>>>> ef7c24d1f930ffdeaa2ad7f04bc0fdaf7bfed168
 						break;
 					}
 					end = false;

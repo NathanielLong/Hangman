@@ -1612,4 +1612,4 @@ found
 foundation
 founder
 four
-fourth...
+fourth
