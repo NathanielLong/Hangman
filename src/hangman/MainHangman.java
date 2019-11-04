@@ -32,21 +32,11 @@ public class MainHangman {
 			ArrayList<Character> correctLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
-			
-			// Getting text file of list of possible words
-
 			ArrayList<String> wordBank = FileHelper.readFromFile();
 			
 			int minLength = 0, maxLength = 0;
-<<<<<<< HEAD
-
-			// Allows user to pick from multiple files of possible words
-
-			switch(HangmanVisuals.getDiffLevel()) {
-=======
 			
 			switch(HangmanVisuals.getDiffLevel(scnr)) {
->>>>>>> 54e7a5ed39f10d6268e87b8c735400fba8301d07
 			case EASY:
 				maxLength = 5;
 				addedPoints = 1;
@@ -75,9 +65,6 @@ public class MainHangman {
 			while (!end) {
 				boolean done = false;
 				while (!done) {
-
-					// Only allows input to be a single letter
-
 					guessedChar = Validator
 							.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
 							.charAt(0);
@@ -92,7 +79,7 @@ public class MainHangman {
 						done = true;
 					}
 				}
-				// Reveals every place that letter is found in the word
+				
 				guessedChar = Character.toUpperCase(guessedChar);
 				if (Hangman.stringHasChar(hiddenWord, guessedChar)) {
 					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, hiddenWord));
@@ -114,10 +101,7 @@ public class MainHangman {
 					System.out.println("Oops, this word doesn't contain this letter...");
 					guessedLetters.add(guessedChar);
 					HangmanVisuals.update(guessedLetters, partialWord);
-					
-					// Counter of misses that increments 
 					missedCounter++;
-					// User cannot miss more 9 times
 					if (missedCounter == 9) {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
@@ -127,7 +111,6 @@ public class MainHangman {
 						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
-							System.out.println(LeaderBoard.percentageWins());
 						}
 					}
 				}
@@ -135,10 +118,8 @@ public class MainHangman {
 			}
 		userReply = Validator.getString(scnr, "Would you like to play again? (y/n): ").charAt(0);
 		} while (userReply == 'y');
-		System.out.println("Please come come again!");
+		System.out.println("Please come play again!");
 		LeaderBoard.saveLeaderBoard();
 		scnr.close();
-		}
-
 	}
-
+}
