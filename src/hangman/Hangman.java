@@ -64,5 +64,6 @@ public class Hangman {
 	    sb.append(inputString);
 	 
 	    return sb.toString();
+	
 	}
 }
