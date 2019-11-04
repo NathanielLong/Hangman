@@ -32,19 +32,15 @@ public class MainHangman {
 			ArrayList<Character> correctLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
-<<<<<<< HEAD
 			
 			// Getting text file of list of possible words
-=======
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
+
 			ArrayList<String> wordBank = FileHelper.readFromFile();
 			
 			int minLength = 0, maxLength = 0;
-			
-<<<<<<< HEAD
+
 			// Allows user to pick from multiple files of possible words
-=======
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
+
 			switch(HangmanVisuals.getDiffLevel()) {
 			case EASY:
 				maxLength = 5;
@@ -74,10 +70,9 @@ public class MainHangman {
 			while (!end) {
 				boolean done = false;
 				while (!done) {
-<<<<<<< HEAD
+
 					// Only allows input to be a single letter
-=======
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
+
 					guessedChar = Validator
 							.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
 							.charAt(0);
@@ -92,11 +87,7 @@ public class MainHangman {
 						done = true;
 					}
 				}
-				
-<<<<<<< HEAD
 				// Reveals every place that letter is found in the word
-=======
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
 				guessedChar = Character.toUpperCase(guessedChar);
 				if (Hangman.stringHasChar(hiddenWord, guessedChar)) {
 					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, hiddenWord));
@@ -118,14 +109,11 @@ public class MainHangman {
 					System.out.println("Oops, this word doesn't contain this letter...");
 					guessedLetters.add(guessedChar);
 					HangmanVisuals.update(guessedLetters, partialWord);
-<<<<<<< HEAD
 					
 					// Counter of misses that increments 
 					missedCounter++;
 					// User cannot miss more 9 times
-=======
 					missedCounter++;
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
 					if (missedCounter == 9) {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
@@ -145,10 +133,7 @@ public class MainHangman {
 		System.out.println("Please come come again!");
 		LeaderBoard.saveLeaderBoard();
 		scnr.close();
-	}
-<<<<<<< HEAD
+		}
 
-}
-=======
-}
->>>>>>> fa8486b5d70320a68c7cd609e0e708d5e5a74bc7
+	}
+
