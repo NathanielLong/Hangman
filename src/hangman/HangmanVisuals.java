@@ -64,11 +64,9 @@ public class HangmanVisuals {
 
 		int numGuessedLetters = guessedLetters.size();
 
-		// if (guessedLetters.size() < )
-
 		if (numGuessedLetters < hangMen.length) {
 			for (String y : hangMen[guessedLetters.size()]) {
-				for (int i = 0; i < 40; i++) {
+				for (int i = 0; i < 50; i++) {
 					System.out.print(' ');
 				}
 				System.out.println(y);
@@ -91,7 +89,10 @@ public class HangmanVisuals {
 	}
 
 	public static String getUserName() {
-		return Validator.getString(new Scanner(System.in), "Please enter your name: ");
+		Scanner scn = new Scanner(System.in);
+		String username = Validator.getString(new Scanner(System.in), "Please enter your name: ");
+		scn.close();
+		return username;
 	}
 	
 	public static Difficulty getDiffLevel() {
