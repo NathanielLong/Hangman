@@ -2,7 +2,7 @@ package hangman;
 import java.util.ArrayList;
 
 public class Selector {
-	public static String getWordByLengthRange(int minLength, int maxLength, ArrayList<String> options) throws Exception {
+	public static String getWordByLengthRange(int minLength, int maxLength, ArrayList<String> options) {
 		String chosenWord = "";
 		String tempWord = "";
 		boolean foundNumInRange = false;
@@ -14,7 +14,7 @@ public class Selector {
 			tempWord = options.get(selectedIndex);
 			if (isInRange(tempWord.length(), new int[] { minLength, maxLength })) {
 				foundNumInRange = true;
-				return tempWord;
+				return tempWord.toUpperCase();
 			} else {
 				alreadyCheckedIndexes.add(selectedIndex);
 				if ((selectedIndex + 1) != options.size()) {
@@ -40,10 +40,10 @@ public class Selector {
 		return longest;
 	}
 
-	private static int getRandNum(int maxLength, ArrayList<Integer> alreadyCheckedIndexes) throws Exception {
-		if (maxLength == alreadyCheckedIndexes.size()) {
-			throw new Exception("Couldn't find any words within the given length range.  Please edit the given word file or provide a new one.");
-		}
+	private static int getRandNum(int maxLength, ArrayList<Integer> alreadyCheckedIndexes){
+//		if (maxLength == alreadyCheckedIndexes.size()) {
+//			throw new Exception("Couldn't find any words within the given length range.  Please edit the given word file or provide a new one.");
+//		}
 		
 		int foundNum = -1;
 		boolean foundNewNum = false;
