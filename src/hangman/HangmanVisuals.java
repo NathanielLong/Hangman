@@ -98,7 +98,7 @@ public class HangmanVisuals {
 		do
 		{
 			switch (Validator.getString(new Scanner(System.in), "Please select a difficulty level to determine word length.\n"
-					+ "  You can enter 'easy' (0-5 letters), 'medium'(6-10 letters), or 'hard' (10-14 letters)").toLowerCase()) {
+					+ "You can enter 'easy' (0-5 letters), 'medium'(6-10 letters), or 'hard' (10-14 letters): ").toLowerCase()) {
 			case "easy":
 				return Difficulty.EASY;
 			case "medium":
