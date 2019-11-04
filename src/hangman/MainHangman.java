@@ -12,84 +12,84 @@ import java.util.Scanner;
 
 public class MainHangman {
 
-	static ArrayList<Character> guessedLetters = new ArrayList<>();
-
 	public static void main(String[] args) {
-
+		LeaderBoard.loadLeaderBoard();
+		
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
 		int counter = 0;
 		char guessedChar = 0;
-//		String gameMode;
-		System.out.println("Dang Man, Let's Play Hang Man!");
-		HangmanVisuals.loadHangMen();
-		HangmanVisuals.update(guessedLetters, "");
+		char userReply;
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
-		String easyWord;
-		ArrayList<String> easywords = FileHelper.readFromFile();
-		String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
-//		System.out.println(randomStringFromEasyWords);
-		String partialWord = "";
-		for (int i = 0; i < randEasyWord.length(); i++) {
-			partialWord += "_";
+		if (userName.equalsIgnoreCase("Nina")) {
+			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
+			counter--;
 		}
+		if (userName.equalsIgnoreCase("Rob")) {
+			System.out.println("Bro, you just get an automatic win. You don't even have to play...");
+			counter++;
+		}
+		if (userName.equalsIgnoreCase("Nathaniel")) {
+			System.out.println("Haha, I'm gonna lose...");
+		}
+		do {
+			ArrayList<Character> guessedLetters = new ArrayList<>();
+			int missedCounter = 0;
+			HangmanVisuals.loadHangMen();
+			ArrayList<String> easywords = FileHelper.readFromFile();
+			String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
+			String partialWord = "";
 
-		while (guessedLetters.size() < 10 && !partialWord.equalsIgnoreCase(randEasyWord)) {
-			boolean done = false;
-<<<<<<< HEAD
-			while(!done) {
-			guessedChar = Validator.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
-					.charAt(0);
-<<<<<<< HEAD
-			if(randEasyWord.indexOf(guessedChar) != -1) {
-				System.out.println("You have already guessed this. Please enter another letter: ");
-			} else {
-				done = true;
+			for (int i = 0; i < randEasyWord.length(); i++) {
+				partialWord += "_";
 			}
-			} 
-			guessedChar = Character.toUpperCase(guessedChar);
-			if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
-				partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
-				for (int i = 0; i < partialWord.length(); i++)
-					System.out.print(partialWord.charAt(i) + " ");
-=======
-			guessedSingleString = Character.toUpperCase(guessedSingleString);
-			if (Hangman.stringHasChar(randEasyWord, guessedSingleString)) {
-				partialWord = (Hangman.updatePartialWord(guessedSingleString, partialWord, randEasyWord));
-				HangmanVisuals.update(guessedLetters, partialWord);
-//				for (int i = 0; i < partialWord.length(); i++)
-//					System.out.print(partialWord.charAt(i) + " ");
->>>>>>> 9dd0229f4086635b6510b09183eea4f064b547e4
-//				System.out.println(partialWord);
-=======
-			while (!done) {
-				guessedChar = Validator
-						.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}").charAt(0);
-				if ((randEasyWord.indexOf(guessedChar) != -1) || (partialWord.indexOf(guessedChar) != -1)) {
-					System.out.println("You have already guessed this. Please enter another letter: ");
-				} else {
-					done = true;
+			HangmanVisuals.update(guessedLetters, "");
+			boolean end = false;
+			while (!end) {
+				boolean done = false;
+				while (!done) {
+					guessedChar = Validator
+							.getStringMatchingRegex(scnr, userName + ", please enter a letter: ", "[A-za-z]{1}")
+							.charAt(0);
+					guessedChar = Character.toUpperCase(guessedChar);
+					if (guessedLetters.contains(guessedChar)) {
+						System.out.println("You have already guessed this. Please enter another letter: ");
+					} else {
+						done = true;
+					}
 				}
+				guessedChar = Character.toUpperCase(guessedChar);
+				if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
+					partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
+					HangmanVisuals.update(guessedLetters, partialWord);
+					if (partialWord.equals(randEasyWord)) {
+						end = true;
+						System.out.println("Hurray, you made it!");
+						LeaderBoard.addVictory(userName, 1);
+						break;
+					}
+					end = false;
+				} else {
+					System.out.println("Oops, this word doesn't contain this letter...");
+					guessedLetters.add(guessedChar);
+					HangmanVisuals.update(guessedLetters, partialWord);
+					missedCounter++;
+					if (missedCounter == 9) {
+						end = true;
+						System.out.println("Dang man, now we gotta eat cake!");
+						System.out.println("Here was the correct word: " + randEasyWord);
+						LeaderBoard.addLoss();
+					}
+				}
+
 			}
-			
-			guessedChar = Validator.getStringMatchingRegex(scnr, "Please enter a letter: ", "[A-za-z]{1}").charAt(0);
-			guessedChar = Character.toUpperCase(guessedChar);
-			if (Hangman.stringHasChar(randEasyWord, guessedChar)) {
-				partialWord = (Hangman.updatePartialWord(guessedChar, partialWord, randEasyWord));
-				HangmanVisuals.update(guessedLetters, partialWord);
->>>>>>> f89a134b89760dfdb3a9a61691c3667cbe777ffd
-				counter++;
-			} else {
-				// this is not working
-				System.out.println("Oops, this word doesn't contain this letter...");
-				guessedLetters.add(guessedChar);
-				HangmanVisuals.update(guessedLetters, partialWord);
-				counter++;
-			}
-		}
-		System.out.println("\nThank you for playing!");
+			System.out.println("Would you like to continue? (y/n) ");
+			userReply = scnr.nextLine().charAt(0);
+		} while (userReply == 'y');
+		System.out.println("Please come come again!");
+		LeaderBoard.saveLeaderBoard();
 	}
 
 }
