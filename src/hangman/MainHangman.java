@@ -22,6 +22,17 @@ public class MainHangman {
 		char userReply;
 		System.out.println("Please enter your name: ");
 		userName = scnr.nextLine();
+		if (userName.equalsIgnoreCase("Nina")) {
+			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
+			counter--;
+		}
+		if (userName.equalsIgnoreCase("Rob")) {
+			System.out.println("Bro, you just get an automatic win. You don't even have to play...");
+			counter++;
+		}
+		if (userName.equalsIgnoreCase("Nathaniel")) {
+			System.out.println("Haha, I'm gonna lose...");
+		}
 		do {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
 			int missedCounter = 0;
@@ -66,6 +77,7 @@ public class MainHangman {
 					if (missedCounter == 9) {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
+						System.out.println("Here was the correct word: " + randEasyWord);
 					}
 				}
 
