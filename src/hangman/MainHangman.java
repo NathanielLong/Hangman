@@ -15,7 +15,7 @@ public class MainHangman {
 		
 		int addedPoints = 0;
 		
-		userName = HangmanVisuals.getUserName();
+		userName = HangmanVisuals.getUserName(scnr);
 		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
@@ -38,10 +38,15 @@ public class MainHangman {
 			ArrayList<String> wordBank = FileHelper.readFromFile();
 			
 			int minLength = 0, maxLength = 0;
+<<<<<<< HEAD
 
 			// Allows user to pick from multiple files of possible words
 
 			switch(HangmanVisuals.getDiffLevel()) {
+=======
+			
+			switch(HangmanVisuals.getDiffLevel(scnr)) {
+>>>>>>> 54e7a5ed39f10d6268e87b8c735400fba8301d07
 			case EASY:
 				maxLength = 5;
 				addedPoints = 1;

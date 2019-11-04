@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 Total Wins:12
 Total Losses:0
 h has 1 points!
 Nina has 6 points!
+=======
+Total Wins:0
+Total Losses:1
+>>>>>>> 54e7a5ed39f10d6268e87b8c735400fba8301d07

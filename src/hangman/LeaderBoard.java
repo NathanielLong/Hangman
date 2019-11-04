@@ -1,6 +1,5 @@
 package hangman;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,9 +24,9 @@ public class LeaderBoard {
 	public static void loadLeaderBoard() {
 		Path p = Paths.get("resources", "leaderBoard.txt");
 		File f = p.toFile();
-
+		BufferedReader br = null;
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(f));
+			br = new BufferedReader(new FileReader(f));
 			String line = "";
 			int lineCounter = 0;
 			while ((line = br.readLine()) != null) {
@@ -39,73 +38,74 @@ public class LeaderBoard {
 					totalLosses = Integer.valueOf(line.split(":")[1]);
 					break;
 				default:
-					if (!line.isEmpty())
-					{
+					if (!line.isEmpty()) {
 						String[] thisEntry = line.split(" ");
 						leaderBoardMap.put(thisEntry[0], Integer.valueOf(thisEntry[2]));
 					}
 				}
 				lineCounter++;
+<<<<<<< HEAD
 //				br.close();
+=======
+				
+>>>>>>> 54e7a5ed39f10d6268e87b8c735400fba8301d07
 			}
-
+			br.close();
 		} catch (IOException e) {
 			System.out.println(e);
-		}
+		} 
 	}
 
 	public static void saveLeaderBoard() {
-			Path p = Paths.get("resources","leaderBoard.txt");
-			File file = p.toFile();
-			PrintWriter output = null;
-			
-			try {
-				output = new PrintWriter(new FileOutputStream(file, false));
-				output.println("Total Wins:" + totalWins);
-				output.println("Total Losses:" + totalLosses);
-				for (String s : leaderBoardMap.keySet())
-				{
-					output.println(s + " has " + leaderBoardMap.get(s) + " points!");
-				}
+		Path p = Paths.get("resources", "leaderBoard.txt");
+		File file = p.toFile();
+		PrintWriter output = null;
+
+		try {
+			output = new PrintWriter(new FileOutputStream(file, false));
+			output.println("Total Wins:" + totalWins);
+			output.println("Total Losses:" + totalLosses);
+			for (String s : leaderBoardMap.keySet()) {
+				output.println(s + " has " + leaderBoardMap.get(s) + " points!");
 			}
-			catch (IOException e) {
-				System.out.println(e);
-			}
-			output.close();
+		} catch (IOException e) {
+			System.out.println(e);
 		}
-	
+		output.close();
+	}
+
 	public static void addVictory(String userName, int numNewPoints) {
 		totalWins++;
-		
+
 		for (String s : leaderBoardMap.keySet()) {
 			if (s.equalsIgnoreCase(userName)) {
 				Integer i = leaderBoardMap.get(s);
-				leaderBoardMap.put(s,i + numNewPoints);
+				leaderBoardMap.put(s, i + numNewPoints);
 				return;
 			}
 		}
-		
-		leaderBoardMap.put(userName,numNewPoints);
+
+		leaderBoardMap.put(userName, numNewPoints);
 	}
-	
+
 	public static void addLoss() {
 		totalLosses++;
 	}
-	
+
 	public static void readLeaderBoard() {
 		String fileName = "leaderBoard.txt";
 		Path path = Paths.get("resources", fileName);
 		File file = path.toFile();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
-			
+
 			String line;
 			while ((line = br.readLine()) != null) {
 				System.out.println(line);
 			}
 
 			br.close();
-			
+
 		} catch (FileNotFoundException e) {
 
 			System.out.println("Something went wrong with your file...");
@@ -133,7 +133,5 @@ public class LeaderBoard {
 		return 0.0;
 		
 	}
-	
+
 }
-
-
