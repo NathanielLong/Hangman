@@ -1,2 +1,4 @@
-Total Wins:0
-Total Losses:3
+Total Wins:7
+Total Losses:5
+Kevin has 1 points!
+nina has 8 points!

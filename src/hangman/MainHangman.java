@@ -86,13 +86,15 @@ public class MainHangman {
 					HangmanVisuals.update(guessedLetters, partialWord);
 					if (partialWord.equals(hiddenWord)) {
 						end = true;
-						System.out.println("Hurray, you made it!");
+						System.out.println("Hooray, you made it!");
 						LeaderBoard.addVictory(userName, addedPoints);
 						LeaderBoard.saveLeaderBoard();
 
 						userReply = Validator.getString(scnr, "Would you like to see the leader board? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
+							System.out.printf("\n%.2f", LeaderBoard.percentageWins());
+							System.out.println("% wins.");
 						}
 						break;
 					}
@@ -111,6 +113,7 @@ public class MainHangman {
 						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
+							System.out.println(LeaderBoard.percentageWins()+"%");
 						}
 					}
 				}

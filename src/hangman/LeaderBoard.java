@@ -114,23 +114,9 @@ public class LeaderBoard {
 		}
 		
 	}
-	public static double percentageWins() {
-		double percentage = totalWins / (totalWins + totalLosses) * 100;
-		return percentage;
+	public static double percentageWins() {	
+		return ((double)totalWins / (double)(totalWins + totalLosses) * 100);
 		// pass totalWins and totalLosses
-	}
-	
-	public static double averageGuesses(double numMiss, double numCorrect, double numPlayed) {
-		return (numMiss + numCorrect / numPlayed);
-		
-	}
-	public static double averageWordLength(double numPlayed, double lengthWord) {
-		// get length of each word
-		// add all lengths
-		// get timesPlayed
-		// lengthWord + lengthWord etc / timesPlayed
-		return 0.0;
-		
 	}
 
 }
