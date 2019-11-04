@@ -14,6 +14,9 @@ public class HangmanVisuals {
 
 	private static String[][] hangMen = new String[10][20];
 
+	/*
+	 * Loads hangman graphic from files in hangStages folder into hangMen array
+	 */
 	public static void loadHangMen() {
 
 		String fileName = "";
@@ -47,6 +50,9 @@ public class HangmanVisuals {
 		}
 	}
 
+	/*
+	 * Updates our graphic and prints out the partially-revealed hidden word, in addition to a list of guessed letters
+	 */
 	public static void update(ArrayList<Character> guessedLetters, String partialWord) {
 
 		// Clearing out console
@@ -65,12 +71,18 @@ public class HangmanVisuals {
 		int numGuessedLetters = guessedLetters.size();
 
 		if (numGuessedLetters < hangMen.length) {
+			
+			//Showing hangman graphic contained in 2d array
 			for (String y : hangMen[guessedLetters.size()]) {
 				for (int i = 0; i < 50; i++) {
 					System.out.print(' ');
 				}
 				System.out.println(y);
 			}
+			
+			System.out.println("");
+			
+			
 			// Showing guessed letters
 			if (!guessedLetters.isEmpty()) {
 				System.out.println("Guessed letters:");
@@ -80,28 +92,37 @@ public class HangmanVisuals {
 				System.out.println("");
 
 			}
-
+			
+			//Centering guessed letters
+			for (int i = 0; i < (60 - partialWord.length()); i++) {
+				System.out.print(" ");
+			}
+			
 			// Showing word
 			printPartialWord(partialWord);
+			System.out.println("");
 			System.out.println("");
 
 		}
 	}
 
-	public static String getUserName() {
-		Scanner scn = new Scanner(System.in);
+	/*
+	 * Prompts the user to enter their name and returns it
+	 */
+	public static String getUserName(Scanner scnr) {
 		String username = Validator.getString(new Scanner(System.in), "Please enter your name: ");
-		//scn.close();
 		return username;
 	}
 	
-	public static Difficulty getDiffLevel() {
+	/*
+	 * Prompts the user to enter a desired difficulty level and repeatedly asks until they enter one in the proper format
+	 */
+	public static Difficulty getDiffLevel(Scanner scnr) {
 		Boolean selected = false;
-		//Scanner scnr = new Scanner(System.in);
 		Difficulty level = Difficulty.EASY;
 		do
 		{
-			switch (Validator.getString(new Scanner(System.in), "Please select a difficulty level to determine word length.\n"
+			switch (Validator.getString(scnr, "Please select a difficulty level to determine word length.\n"
 					+ "You can enter 'easy' (0-5 letters), 'medium'(6-10 letters), or 'hard' (10-14 letters): ").toLowerCase()) {
 			case "easy":
 				level = Difficulty.EASY;
@@ -123,13 +144,18 @@ public class HangmanVisuals {
 		return level;
 	}
 	
+	/*
+	 * Prints our partially-guessed hidden word with a space in between each character
+	 */
 	private static void printPartialWord(String partialWord) {
 		for (char c : partialWord.toCharArray()) {
 			System.out.print("" + c + ' ');
 		}
 	}
 
-	
+	/*
+	 * Clears the console
+	 */
 	private static void clearConsole() {
 		try {
 			new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
