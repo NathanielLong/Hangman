@@ -3,6 +3,7 @@ package hangman;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -89,6 +90,30 @@ public class LeaderBoard {
 	
 	public static void addLoss() {
 		totalLosses++;
+	}
+	
+	public static void readLeaderBoard() {
+		String fileName = "leaderBoard.txt";
+		Path path = Paths.get("resources", fileName);
+		File file = path.toFile();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			
+			String line;
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+			}
+
+			br.close();
+			
+		} catch (FileNotFoundException e) {
+
+			System.out.println("Something went wrong with your file...");
+		} catch (IOException e) {
+
+			System.out.println("Something went wrong while reading from the file...");
+		}
+
 	}
 	
 }
