@@ -93,10 +93,7 @@ public class MainHangman {
 					if (partialWord.equals(hiddenWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-<<<<<<< HEAD
 
-=======
->>>>>>> 79ce848216d0dc57d8d533b36a237ff368ff727d
 						LeaderBoard.addVictory(userName, 1);
 
 						System.out.println("Would you like to see the leader board? (y/n): ");
