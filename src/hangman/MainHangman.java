@@ -38,7 +38,6 @@ public class MainHangman {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
-			HangmanVisuals.update(guessedLetters, "");
 			ArrayList<String> easywords = FileHelper.readFromFile();
 			String randEasyWord = easywords.get((int) Math.floor(Math.random() * easywords.size()));
 			String partialWord = "";
@@ -46,6 +45,7 @@ public class MainHangman {
 			for (int i = 0; i < randEasyWord.length(); i++) {
 				partialWord += "_";
 			}
+			HangmanVisuals.update(guessedLetters, "");
 			boolean end = false;
 			while (!end) {
 				boolean done = false;
