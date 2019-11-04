@@ -13,10 +13,14 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class FileHelper {
+	public static String fileName = "easywordlist.txt";
+	
+	public static void setFileName(String iFileName) {
+		fileName = iFileName;
+	}
 
 	public static ArrayList<String> readFromFile() {
 		ArrayList<String> easywords = new ArrayList<>();
-		String fileName = "easywordlist.txt";
 		Path path = Paths.get("easywordlist", fileName);
 		File file = path.toFile();
 		try {
