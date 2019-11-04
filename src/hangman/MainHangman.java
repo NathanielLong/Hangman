@@ -14,7 +14,7 @@ public class MainHangman {
 
 	public static void main(String[] args) {
 		LeaderBoard.loadLeaderBoard();
-		
+
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
@@ -67,11 +67,13 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-<<<<<<< HEAD
-=======
-
->>>>>>> e700de5561aa0b11ec87b2b31fae951444c644c2
 						LeaderBoard.addVictory(userName, 1);
+
+						System.out.println("Would you like to see the leader board? (y/n): ");
+						userReply = scnr.nextLine().charAt(0);
+						if (userReply == 'y') {
+							LeaderBoard.readLeaderBoard();
+						}
 						break;
 					}
 					end = false;
@@ -85,6 +87,11 @@ public class MainHangman {
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + randEasyWord);
 						LeaderBoard.addLoss();
+						System.out.println("Would you like to see the leader board? (y/n): ");
+						userReply = scnr.nextLine().charAt(0);
+						if (userReply == 'y') {
+							LeaderBoard.readLeaderBoard();
+						}
 					}
 				}
 
