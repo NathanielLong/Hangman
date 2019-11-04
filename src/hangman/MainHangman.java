@@ -68,10 +68,7 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
-<<<<<<< HEAD
-=======
 
->>>>>>> e700de5561aa0b11ec87b2b31fae951444c644c2
 						LeaderBoard.addVictory(userName, 1);
 						break;
 					}
