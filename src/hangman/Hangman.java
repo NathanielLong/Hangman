@@ -2,33 +2,7 @@ package hangman;
 
 import java.util.Scanner;
 
-public class Hangman {
-//	public static void main(String[] args) {
-//
-//		Scanner scan = new Scanner(System.in);
-//
-//		int missedLetters = 0;
-//
-//		String _compWord = "Hello";
-//
-//		System.out.println(_compWord);
-//
-//		// validates that the user input is a letter and one character
-//		String userLetter = Validator.getStringMatchingRegex(scan, "Enter a letter: ", "[A-Za-z]{1}");
-//		System.out.println(userLetter);
-//
-//		// replaces the computer word with underscores
-//		_compWord = _compWord.replaceAll("(?i)[a-zA-z]", "_");
-//		System.out.println(_compWord);
-//
-//		if (_compWord.contains(userLetter)) {
-//			System.out.println(userLetter);
-//		} else {
-//			missedLetters++;
-//		}
-//
-//	}
-	
+public class Hangman {	
 	/*
 	 * Replaces a single character in inputString at location specified by newCharIndex with character
 	 * specified by newChar
