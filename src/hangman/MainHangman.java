@@ -1,12 +1,5 @@
 package hangman;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +9,6 @@ public class MainHangman {
 		LeaderBoard.loadLeaderBoard();
 
 		Scanner scnr = new Scanner(System.in);
-		StringBuilder sb = new StringBuilder();
 		String userName;
 		char guessedChar = 0;
 		char userReply;
@@ -24,8 +16,6 @@ public class MainHangman {
 		int addedPoints = 0;
 		
 		userName = HangmanVisuals.getUserName();
-//		System.out.println("Please enter your name: ");
-//		userName = scnr.nextLine();
 		
 		if (userName.equalsIgnoreCase("Nina")) {
 			System.out.println("There is no cheating allowed and you dont have over 1000 wins...");
@@ -39,6 +29,7 @@ public class MainHangman {
 		
 		do {
 			ArrayList<Character> guessedLetters = new ArrayList<>();
+			ArrayList<Character> correctLetters = new ArrayList<>();
 			int missedCounter = 0;
 			HangmanVisuals.loadHangMen();
 			ArrayList<String> wordBank = FileHelper.readFromFile();
@@ -62,7 +53,6 @@ public class MainHangman {
 				break;
 			}
 			
-			//String hiddenWord = wordBank.get((int) Math.floor(Math.random() * wordBank.size()));
 			String hiddenWord = Selector.getWordByLengthRange(minLength, maxLength, wordBank);
 			String partialWord = "";
 
@@ -81,7 +71,11 @@ public class MainHangman {
 					guessedChar = Character.toUpperCase(guessedChar);
 					if (guessedLetters.contains(guessedChar)) {
 						System.out.println("You have already guessed this. Please enter another letter: ");
+					} 
+					else if (correctLetters.contains(guessedChar)) {
+						System.out.println("You have already guessed this. Please enter another letter: ");
 					} else {
+						correctLetters.add(guessedChar);
 						done = true;
 					}
 				}
@@ -94,9 +88,9 @@ public class MainHangman {
 						end = true;
 						System.out.println("Hurray, you made it!");
 						LeaderBoard.addVictory(userName, addedPoints);
+						LeaderBoard.saveLeaderBoard();
 
-						System.out.println("Would you like to see the leader board? (y/n): ");
-						userReply = scnr.nextLine().charAt(0);
+						userReply = Validator.getString(scnr, "Would you like to see the leader board? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
 						}
@@ -113,8 +107,8 @@ public class MainHangman {
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + hiddenWord);
 						LeaderBoard.addLoss();
-						System.out.println("Would you like to see the leader board? (y/n): ");
-						userReply = scnr.nextLine().charAt(0);
+						LeaderBoard.saveLeaderBoard();
+						userReply = Validator.getString(scnr, "Would you like to see the leaderboard? (y/n): ").charAt(0);
 						if (userReply == 'y') {
 							LeaderBoard.readLeaderBoard();
 						}
@@ -122,11 +116,11 @@ public class MainHangman {
 				}
 
 			}
-			System.out.println("Would you like to continue? (y/n) ");
-			userReply = scnr.nextLine().charAt(0);
+		userReply = Validator.getString(scnr, "Would you like to play again? (y/n): ").charAt(0);
 		} while (userReply == 'y');
 		System.out.println("Please come come again!");
 		LeaderBoard.saveLeaderBoard();
+		scnr.close();
 	}
 
 }
