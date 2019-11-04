@@ -29,7 +29,7 @@ public class HangmanVisuals {
 				for (int y = 0; y < hangMen[i].length; y++) {
 					hangMen[i][y] = br.readLine();
 				}
-				
+
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				System.out.println("Warning: Hangman graphic file #" + i + " not found");
@@ -50,7 +50,7 @@ public class HangmanVisuals {
 
 		// Clearing out console
 		clearConsole();
-		
+
 		for (int i = 0; i < 35; i++) {
 			System.out.print(' ');
 		}
@@ -60,30 +60,37 @@ public class HangmanVisuals {
 		for (int i = 0; i <= 4; i++) {
 			System.out.println("");
 		}
-		for (String y : hangMen[guessedLetters.size()]) {
-			for (int i = 0; i < 40; i++) {
-				System.out.print(' ');
-			}
-			System.out.println(y);
-		}
 
+		int numGuessedLetters = guessedLetters.size();
 
-		// Showing guessed letters
-		if (!guessedLetters.isEmpty()) {
-			System.out.println("Guessed letters:");
-			for (Character c : guessedLetters) {
-				System.out.print(c + ", ");
+		// if (guessedLetters.size() < )
+
+		if (numGuessedLetters < hangMen.length) {
+			for (String y : hangMen[guessedLetters.size()]) {
+				for (int i = 0; i < 40; i++) {
+					System.out.print(' ');
+				}
+				System.out.println(y);
 			}
+			// Showing guessed letters
+			if (!guessedLetters.isEmpty()) {
+				System.out.println("Guessed letters:");
+				for (Character c : guessedLetters) {
+					System.out.print(c + ", ");
+				}
+				System.out.println("");
+
+			}
+
+			// Showing word
+			printPartialWord(partialWord);
 			System.out.println("");
+
 		}
-		
-		// Showing word
-		printPartialWord(partialWord);
-		System.out.println("");
 	}
-	
+
 	private static void printPartialWord(String partialWord) {
-		for (char c :partialWord.toCharArray()) {
+		for (char c : partialWord.toCharArray()) {
 			System.out.print("" + c + ' ');
 		}
 	}
