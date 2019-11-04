@@ -13,7 +13,8 @@ import java.util.Scanner;
 public class MainHangman {
 
 	public static void main(String[] args) {
-
+		LeaderBoard.loadLeaderBoard();
+		
 		Scanner scnr = new Scanner(System.in);
 		StringBuilder sb = new StringBuilder();
 		String userName;
@@ -66,6 +67,7 @@ public class MainHangman {
 					if (partialWord.equals(randEasyWord)) {
 						end = true;
 						System.out.println("Hurray, you made it!");
+						LeaderBoard.addVictory(userName, 1);
 						break;
 					}
 					end = false;
@@ -78,6 +80,7 @@ public class MainHangman {
 						end = true;
 						System.out.println("Dang man, now we gotta eat cake!");
 						System.out.println("Here was the correct word: " + randEasyWord);
+						LeaderBoard.addLoss();
 					}
 				}
 
@@ -86,6 +89,7 @@ public class MainHangman {
 			userReply = scnr.nextLine().charAt(0);
 		} while (userReply == 'y');
 		System.out.println("Please come come again!");
+		LeaderBoard.saveLeaderBoard();
 	}
 
 }
