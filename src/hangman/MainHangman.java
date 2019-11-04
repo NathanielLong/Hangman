@@ -122,5 +122,4 @@ public class MainHangman {
 		LeaderBoard.saveLeaderBoard();
 		scnr.close();
 	}
-
 }
