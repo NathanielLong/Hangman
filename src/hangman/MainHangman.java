@@ -118,7 +118,7 @@ public class MainHangman {
 			}
 		userReply = Validator.getString(scnr, "Would you like to play again? (y/n): ").charAt(0);
 		} while (userReply == 'y');
-		System.out.println("Please come come again!");
+		System.out.println("Please come play again!");
 		LeaderBoard.saveLeaderBoard();
 		scnr.close();
 	}
