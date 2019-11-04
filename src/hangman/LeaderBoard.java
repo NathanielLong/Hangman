@@ -42,7 +42,7 @@ public class LeaderBoard {
 					if (!line.isEmpty())
 					{
 						String[] thisEntry = line.split(" ");
-						leaderBoardMap.put(thisEntry[0], Integer.valueOf(thisEntry[1]));
+						leaderBoardMap.put(thisEntry[0], Integer.valueOf(thisEntry[2]));
 					}
 				}
 				lineCounter++;
