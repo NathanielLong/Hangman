@@ -1,7 +1,5 @@
 package hangman;
 
-import java.util.Scanner;
-
 public class Hangman {	
 	/*
 	 * Replaces a single character in inputString at location specified by newCharIndex with character

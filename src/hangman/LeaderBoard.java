@@ -46,12 +46,12 @@ public class LeaderBoard {
 					}
 				}
 				lineCounter++;
+				br.close();
 			}
 
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-
 	}
 
 	public static void saveLeaderBoard() {
@@ -65,7 +65,7 @@ public class LeaderBoard {
 				output.println("Total Losses:" + totalLosses);
 				for (String s : leaderBoardMap.keySet())
 				{
-					output.println(s + " has " + leaderBoardMap.get(s) + " wins!");
+					output.println(s + " has " + leaderBoardMap.get(s) + " points!");
 				}
 			}
 			catch (IOException e) {
