@@ -1,5 +1,5 @@
-1
-2
+Total Wins:3
+Total Losses:3
 naina 1
-nate 1
+nate 3
 nina 1

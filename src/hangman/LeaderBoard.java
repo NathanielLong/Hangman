@@ -33,10 +33,10 @@ public class LeaderBoard {
 			while ((line = br.readLine()) != null) {
 				switch (lineCounter) {
 				case 0:
-					totalWins = Integer.valueOf(line);
+					totalWins = Integer.valueOf(line.split(":")[1]);
 					break;
 				case 1:
-					totalLosses = Integer.valueOf(line);
+					totalLosses = Integer.valueOf(line.split(":")[1]);
 					break;
 				default:
 					if (!line.isEmpty())
@@ -61,8 +61,8 @@ public class LeaderBoard {
 			
 			try {
 				output = new PrintWriter(new FileOutputStream(file, false));
-				output.println(totalWins);
-				output.println(totalLosses);
+				output.println("Total Wins:" + totalWins);
+				output.println("Total Losses:" + totalLosses);
 				for (String s : leaderBoardMap.keySet())
 				{
 					output.println(s + " " + leaderBoardMap.get(s));
