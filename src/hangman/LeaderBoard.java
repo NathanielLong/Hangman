@@ -38,8 +38,11 @@ public class LeaderBoard {
 					totalLosses = Integer.valueOf(line);
 					break;
 				default:
-					String[] thisEntry = line.split(" ");
-					leaderBoardMap.put(thisEntry[0], Integer.valueOf(thisEntry[1]));
+					if (!line.isEmpty())
+					{
+						String[] thisEntry = line.split(" ");
+						leaderBoardMap.put(thisEntry[0], Integer.valueOf(thisEntry[1]));
+					}
 				}
 				lineCounter++;
 			}
@@ -56,7 +59,7 @@ public class LeaderBoard {
 			PrintWriter output = null;
 			
 			try {
-				output = new PrintWriter(new FileOutputStream(file, true));
+				output = new PrintWriter(new FileOutputStream(file, false));
 				output.println(totalWins);
 				output.println(totalLosses);
 				for (String s : leaderBoardMap.keySet())
@@ -67,6 +70,7 @@ public class LeaderBoard {
 			catch (IOException e) {
 				System.out.println(e);
 			}
+			output.close();
 		}
 	
 	public static void addVictory(String userName, int numNewPoints) {
